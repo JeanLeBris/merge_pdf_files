@@ -16,6 +16,7 @@ def merge_pdf_files(input_dir, output_file):
         content = f.read()
     
     pdf_files = [os.path.join(input_dir, f).replace("\\", "/") for f in os.listdir(input_dir) if os.path.isfile(os.path.join(input_dir, f)) and f.split('.')[-1] == "pdf"]
+    pdf_files.sort()
     tex_calls = ["\\includepdf{" + f + "}" for f in pdf_files]
     tex_text = "\n".join(tex_calls)
     
