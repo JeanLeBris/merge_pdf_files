@@ -3,6 +3,7 @@ import os
 import sys
 import subprocess
 import shutil
+import time
 
 def merge_pdf_files(input_dir, output_file):
     project_src = os.path.split(os.path.split(sys.argv[0])[0])[0]
@@ -21,6 +22,8 @@ def merge_pdf_files(input_dir, output_file):
     tex_text = "\n".join(tex_calls)
     
     content = content.replace("<!-- PUT CONTENT HERE -->", tex_text)
+    
+    time.sleep(1)
 
     with open(os.path.join(temp_dir, "document.tex"), "w") as f:
         f.write(content)
